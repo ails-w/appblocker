@@ -1,0 +1,11 @@
+# Configuración global de appblocker.
+# Destino: /etc/appblocker/config.toml
+
+# "local" usa la hora del sistema; o una zona IANA, ej. "America/Bogota".
+timezone = "local"
+
+# Cada cuánto reevalúa el reloj y aplica el bloqueo (segundos).
+poll_interval_seconds = 1
+
+# Registrar en el journal cada vez que se cierra un objetivo.
+log_attempts = true
