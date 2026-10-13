@@ -11,6 +11,7 @@ daemon root que corre bajo `systemd` y reevalúa el reloj cada segundo.
 | 1 | Policy | define **qué** app y **cuándo** | `01-policy` |
 | 2 | Daemon | mientras el servicio corre (siempre) | `02-daemon` |
 | 3 | CLI | a demanda, por el usuario | `03-cli` |
+| 4 | Integridad | si la config cambia por debajo (golden + `chattr +i`) | `04-integrity` |
 
 ## Mapa
 

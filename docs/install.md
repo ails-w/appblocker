@@ -19,6 +19,7 @@ Orden por módulo. Cada uno es autocontenido y tiene su propio README con
 | 2 | [`01-policy`](../modules/01-policy/README.md) | `/etc/appblocker/policy.d/10-stremio.toml` |
 | 3 | [`02-daemon`](../modules/02-daemon/README.md) | `/usr/local/lib/appblocker/`, `/etc/systemd/system/appblocker.service` |
 | 4 | [`03-cli`](../modules/03-cli/README.md) | `/usr/local/bin/appblocker` |
+| 5 | [`04-integrity`](../modules/04-integrity/README.md) | `/usr/local/bin/appblocker-lock`, `appblocker-integrity`, `golden/` + timer |
 
 ## Resumen
 
