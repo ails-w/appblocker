@@ -68,14 +68,14 @@ appblocker status     # ¿la ventana figura como activa? ¿aparece la '*'?
 appblocker check      # ¿matchea algún PID con la app abierta?
 ```
 
-- Si `status` no marca la ventana: revisá `days`/`start`/`end` (días en inglés, `HH:MM`).
-- Si `check` da `0 procesos` con la app abierta: el `cgroup_match` no coincide. Verificá:
+- Si `status` no marca la ventana: revisa `days`/`start`/`end` (días en inglés, `HH:MM`).
+- Si `check` da `0 procesos` con la app abierta: el `cgroup_match` no coincide. Verifica:
 
   ```bash
   grep -i <nombre-app> /proc/$(pgrep -f <nombre-app> | head -1)/cgroup
   ```
 
-  y ajustá `cgroup_match` en el `target`.
+  y ajusta `cgroup_match` en el `target`.
 
 ## El error de `install` que parece grave y no lo es
 

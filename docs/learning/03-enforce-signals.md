@@ -8,8 +8,8 @@
 | Término | Qué significa (en una línea) |
 |---|---|
 | señal | mensaje corto del kernel a un proceso |
-| `SIGTERM` | "por favor, terminá" (se puede interceptar) |
-| `SIGKILL` | "morí ya" (no se puede interceptar) |
+| `SIGTERM` | "por favor, termina" (se puede interceptar) |
+| `SIGKILL` | "muere ya" (no se puede interceptar) |
 | árbol de procesos | un proceso con hijos (y nietos) |
 | `bwrap` | el sandbox de Flatpak que envuelve la app |
 
