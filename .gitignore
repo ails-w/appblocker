@@ -1,0 +1,23 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Agent tooling (local indexes, never shared)
+.codegraph/
+.atl/
+
+# Backups / dumps
+*.bak
+*.orig
+*~
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
