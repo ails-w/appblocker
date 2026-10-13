@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+# Congela la configuración de appblocker: copia golden + chattr +i.
+# Uso: sudo appblocker-lock
+set -euo pipefail
+
+BASE=/etc/appblocker
+GOLDEN="$BASE/golden"
+
+install -d -m 0700 "$GOLDEN"
+
+audit() { logger -t appblocker "$*" 2>/dev/null || true; }
+
+lock_one() {
+  local live="$1"
+  local rel="${live#"$BASE"/}"
+  local golden="$GOLDEN/$rel"
+
+  install -d -m 0700 "$(dirname "$golden")"
+  chattr -i "$live" "$golden" 2>/dev/null || true
+  cp -a "$live" "$golden"
+  chattr +i "$live" "$golden" 2>/dev/null || true
+  echo "  bloqueado: $live"
+}
+
+for live in "$BASE/config.toml" "$BASE"/policy.d/*.toml; do
+  [ -f "$live" ] || continue
+  lock_one "$live"
+done
+
+audit "config-locked"
+echo "Config bloqueada (golden en $GOLDEN)."
