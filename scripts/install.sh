@@ -54,5 +54,17 @@ run install -m 0644 "$M/03-cli/files/usr/local/lib/appblocker/cli.py" \
                     /usr/local/lib/appblocker/cli.py
 run install -m 0755 "$M/03-cli/files/usr/local/bin/appblocker" /usr/local/bin/appblocker
 
+echo "== Módulo 04: integridad =="
+run install -m 0755 "$M/04-integrity/files/usr/local/bin/appblocker-lock" \
+                    "$M/04-integrity/files/usr/local/bin/appblocker-integrity" /usr/local/bin/
+run install -m 0644 "$M/04-integrity/files/etc/systemd/system/appblocker-integrity.service" \
+                    "$M/04-integrity/files/etc/systemd/system/appblocker-integrity.timer" \
+                    /etc/systemd/system/
+run systemctl daemon-reload
+run systemctl enable --now appblocker-integrity.timer
+if [ ! -d /etc/appblocker/golden ]; then
+  echo "  AVISO: aún sin golden. Cuando tu config sea la definitiva: sudo appblocker-lock"
+fi
+
 echo
 echo "Instalado. Verifica con: sudo scripts/verify.sh"
