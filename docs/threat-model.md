@@ -17,6 +17,7 @@ pensado contra un atacante con root, y no pretende serlo.
 | Volver a abrirla un segundo después | el daemon sigue corriendo dentro de la ventana | 2 |
 | Editar el horario sin permiso | `config` y `policy.d` son `root:root` | 0/1 |
 | Pararlo y olvidarse | `Restart=always` lo revive; `stop` queda registrado | 2 |
+| Editar el horario a mano o sabotearlo | golden + `chattr +i` + restauración cada minuto | 4 |
 
 ## Qué NO protege
 

@@ -82,7 +82,7 @@ ls -la /usr/local/lib/appblocker/  # código
 ### Error común
 
 Poner la config en `~/.config` "porque es donde van mis dotfiles". Ahí es **por usuario** y
-escribible: mata el propósito. Detección: si puedes editar el horario sin `sudo`, está mal
+modificable: mata el propósito. Detección: si puedes editar el horario sin `sudo`, está mal
 ubicado.
 
 ### Para profundizar
@@ -106,7 +106,8 @@ fusiona"*.
 
 ### Qué problema resuelve
 
-Un archivo monolítico es frágil: para agregar un juego habría que editar el archivo de todos.
+Un archivo monolítico es frágil: para agregar un juego habría que editar el archivo compartido
+por todos.
 Con `.d`, **agregar es crear un archivo**.
 
 ### Para qué sirve aquí

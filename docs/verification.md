@@ -44,6 +44,22 @@ appblocker reload           # debe reiniciar el servicio sin error
 **Esperado:** `status` corre como **tu usuario** (no root) y lee la config sin error — prueba
 de que los permisos son `644 root:root` y no `600`.
 
+## Capa 4 — Integridad
+
+```bash
+lsattr /etc/appblocker/config.toml /etc/appblocker/policy.d/*.toml   # con 'i'
+ls -la /etc/appblocker/golden/
+
+# Prueba de sabotaje controlado:
+sudo chattr -i /etc/appblocker/config.toml
+sudo sh -c 'echo "# sabotage" >> /etc/appblocker/config.toml'
+sudo systemctl start appblocker-integrity.service
+grep -c sabotage /etc/appblocker/config.toml   # debe ser 0
+lsattr /etc/appblocker/config.toml             # vuelve a tener 'i'
+```
+
+**Esperado:** los archivos con `i`, la golden presente, y el sabotaje revertido.
+
 ## Checklist final
 
 - [ ] El TOML parsea y `appblocker windows` coincide con lo que escribí.
@@ -51,3 +67,4 @@ de que los permisos son `644 root:root` y no `600`.
 - [ ] Abrir la app dentro de la ventana → se cierra, y queda en el journal.
 - [ ] `appblocker check` detecta la app con `cgroup_match`.
 - [ ] `appblocker status` corre como usuario sin `sudo`.
+- [ ] `appblocker-lock` aplicado: config inmutable y `golden/` presente.

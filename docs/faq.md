@@ -30,6 +30,13 @@ Porque aquí **sí** hacía falta: un bloqueo `20:00 → 02:00` de lunes a viern
 el sábado. El scheduler evalúa "el inicio de hoy" **y** "la cola de ayer", así no se pierde.
 Ver [`learning/01-scheduler.md`](learning/01-scheduler.md).
 
+## ¿`chattr +i` no es peligroso?
+
+Es **fricción**, no una frontera. Un root puede quitarlo con `chattr -i`. Sirve para que
+desactivar el bloqueo sea **deliberado**, se **revierta solo** (check de integridad cada
+minuto) y quede **auditado**. Si te preocupa quedarte fuera: `chattr -i` siempre funciona como
+root, y `scripts/uninstall.sh` lo hace por ti.
+
 ## ¿Por qué la config es `644` y no `600`?
 
 Lo importante es la **propiedad `root:root`**: sin `sudo` nadie la escribe. El `600` además
