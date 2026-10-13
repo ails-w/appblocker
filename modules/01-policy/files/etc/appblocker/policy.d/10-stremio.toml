@@ -1,0 +1,29 @@
+# Objetivo: Stremio (ejemplo)
+# Destino: /etc/appblocker/policy.d/10-stremio.toml
+
+[target.stremio]
+kind = "flatpak"
+flatpak_id = "com.stremio.Stremio"
+# Matcher por cgroup: inmune a renombrar el binario y válido para Flatpak.
+cgroup_match = "com.stremio.Stremio"
+
+# Días de semana, mañana.
+[[window]]
+days  = ["mon", "tue", "wed", "thu", "fri"]
+start = "05:00"
+end   = "16:00"
+apps  = ["stremio"]
+
+# Días de semana, noche. Cruza medianoche: el viernes termina sábado 02:00.
+[[window]]
+days  = ["mon", "tue", "wed", "thu", "fri"]
+start = "20:00"
+end   = "02:00"
+apps  = ["stremio"]
+
+# Domingo, solo de noche. Cruza a lunes 02:00.
+[[window]]
+days  = ["sun"]
+start = "19:00"
+end   = "02:00"
+apps  = ["stremio"]
