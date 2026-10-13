@@ -1,0 +1,7 @@
+[Unit]
+Description=AppBlocker config integrity check
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/appblocker-integrity
+ProtectSystem=full
